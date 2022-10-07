@@ -36,7 +36,6 @@ function App() {
             list.push(type);
             setSearch([...list]);
             setType("");
-            alert("Sucess");
           }}
         >
           Click to Save
