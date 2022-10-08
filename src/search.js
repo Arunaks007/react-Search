@@ -5,7 +5,7 @@ function search(props) {
         Search: <input type="text" onChange={props.onChange} />
       </div>
       {props.data.map((item) => (
-        <div>{item}</div>
+        <div className="item">{item}</div>
       ))}
     </>
   );

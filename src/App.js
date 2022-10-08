@@ -22,6 +22,7 @@ function App() {
 
   return (
     <>
+      <div className="head">Simple Search</div>
       <div className="app">
         Enter here to Save on List:
         <input
