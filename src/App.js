@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import Clear from "./Clear.js";
 import Search from "./search.js";
 
 import "./styles.css";
 
-const list = ["Banana", "Apple", "Orange", "Mango", "Pineapple", "Watermelon"];
+var list = ["Banana", "Apple", "Orange", "Mango", "Pineapple", "Watermelon"];
 
 function App() {
   const [search, setSearch] = useState(list);
@@ -16,14 +17,15 @@ function App() {
       return value.toLowerCase().includes(event.target.value.toLowerCase());
     });
 
-    setSearch(finalv);
+    finalv.length !== 0 ? setSearch(finalv) : setSearch(["No items found"]);
   }
 
   return (
     <>
       <div className="app">
-        Enter:
+        Enter here to Save on List:
         <input
+          id="Search"
           type="text"
           placeholder="type here to save"
           value={type}
@@ -33,13 +35,22 @@ function App() {
         />
         <button
           onClick={() => {
-            list.push(type);
-            setSearch([...list]);
-            setType("");
+            if (type.length !== 0 && isNaN(type)) {
+              list.push(type);
+              setSearch([...list]);
+              setType("");
+            } else {
+              alert("Please Enter Valid Value, It should be a letter");
+              setType("");
+            }
           }}
         >
-          Click to Save
-        </button>
+          Save
+        </button>{" "}
+        <br />
+        <br />
+        <Clear list={list} search={setSearch} />
+        <br />
         <Search onChange={handleSearch} data={search} />
       </div>
     </>
